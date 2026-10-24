@@ -5,7 +5,7 @@ project's main business idea is making accessing travelling destinations easier 
 Node.js	22.22.3
 npm	10.9.8
 Angular CLI	21.2.28
-DB    
+DB        H2
 Architecture	Intel x86_64
 
 # Mandatory Requirements
