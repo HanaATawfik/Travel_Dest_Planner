@@ -14,35 +14,32 @@ public class user { //table name = user
     @Email(message = "Invalid email format")
     private String email;
 
-
     @NotBlank(message = "Password is required")
     @Column(name = "password_hash", length = 255, nullable = false)
     private String passwordHash;
-    @Column( length = 45, nullable = false)
-    @Size(min = 2, max=45,message = "First Name must be at least 2 characters long")
+
+    @Column(length = 45, nullable = false)
+    @Size(min = 2, max = 45, message = "First Name must be at least 2 characters long")
     @NotBlank(message = "First Name is required")
     private String firstName;
 
     @Column(length = 45, nullable = false)
-    @Size(min = 2, max=45, message = "Length must be greater than 1")
+    @Size(min = 2, max = 45, message = "Length must be greater than 1")
     @NotBlank(message = "Last Name is required")
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Role role = Role.USER;
 
-    @Column(nullable = false)
-    private boolean isAdminFlag=false;  //role identifier
+    protected user() {} //no args constructor for JPA
 
-
-
-    protected user(){}; //no args constructor for JPA
-
-
-    public user(String email, String passwordHash, String firstName, String lastName, boolean isAdminFlag) {
+    public user(String email, String passwordHash, String firstName, String lastName, Role role) {
         this.email = email;
         this.passwordHash = passwordHash;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.isAdminFlag = isAdminFlag;
+        this.role = role == null ? Role.USER : role;
     }
 
     public Long getId() {
@@ -65,6 +62,10 @@ public class user { //table name = user
         return lastName;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -81,11 +82,15 @@ public class user { //table name = user
         this.lastName = lastName;
     }
 
+    public void setRole(Role role) {
+        this.role = role == null ? Role.USER : role;
+    }
+
     public boolean isAdminFlag() {
-        return isAdminFlag;
+        return this.role == Role.ADMIN;
     }
 
     public void setAdminFlag(boolean adminFlag) {
-        this.isAdminFlag = adminFlag;
+        this.role = adminFlag ? Role.ADMIN : Role.USER;
     }
 }
