@@ -38,15 +38,21 @@ public class Destination {
     @Size(max = 100, message = "Currency must be at most 100 characters")
     private String currency;
 
+    @Column(nullable = false, length = 500)
+    @NotBlank(message = "Flag URL is required")
+    @Size(max = 500, message = "Flag URL must be at most 500 characters")
+    private String flagUrl;
+
     protected Destination() {
     }
 
-    public Destination(String country, String capital, String region, Long population, String currency) {
+    public Destination(String country, String capital, String region, Long population, String currency, String flagUrl) {
         this.country = country;
         this.capital = capital;
         this.region = region;
         this.population = population;
         this.currency = currency;
+        this.flagUrl = flagUrl;
     }
 
     public Long getId() {
@@ -91,5 +97,13 @@ public class Destination {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public String getFlagUrl() {
+        return flagUrl;
+    }
+
+    public void setFlagUrl(String flagUrl) {
+        this.flagUrl = flagUrl;
     }
 }
