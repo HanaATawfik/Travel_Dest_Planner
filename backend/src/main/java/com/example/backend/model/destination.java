@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class destination {  //if we create new dest france id =1 , new dest cairo id=2, new dest .. id=3 etc
 
     @Id  //column name AKA attributes
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private  Long id;
     private String country;
     private String capital;
