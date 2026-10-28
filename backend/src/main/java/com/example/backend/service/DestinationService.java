@@ -8,10 +8,14 @@ public interface DestinationService {
 
     Destination addDestination(Destination destination);
 
+    List<Destination> addDestinations(List<Destination> destinations);
+
     List<Destination> getAllDestinations();
 
 
+
     List<Destination> searchDestinationsByCountry(String country);
+
     void deleteDestinationById(Long destinationId);
 }
 
