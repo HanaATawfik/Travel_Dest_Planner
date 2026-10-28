@@ -10,7 +10,6 @@ public interface DestinationService {
 
     List<Destination> getAllDestinations();
 
-    List<Destination> getApprovedDestinations();
 
     List<Destination> searchDestinationsByCountry(String country);
     void deleteDestinationById(Long destinationId);
