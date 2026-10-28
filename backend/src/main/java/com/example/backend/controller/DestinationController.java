@@ -35,7 +35,7 @@ public class DestinationController {
     }
 
     @PostMapping("/addDestinations")
-    public List<Destination> addDestinations( @RequestBody List<Destination> destinations) {
+    public List<Destination> addDestinations(@Valid @RequestBody List<Destination> destinations) {
         return destinationService.addDestinations(destinations);
     }
 
