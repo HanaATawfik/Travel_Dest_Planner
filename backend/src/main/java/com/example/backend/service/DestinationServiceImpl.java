@@ -11,18 +11,24 @@ import java.util.List;
 public class DestinationServiceImpl implements DestinationService {
 
     private final DestinationRepository destinationRepository;
-
+    //constructor-based dependency injection
     public DestinationServiceImpl(DestinationRepository destinationRepository) {
         this.destinationRepository = destinationRepository;
     }
 
     @Override
     @Transactional
-    public Destination addDestination(Destination destination) {
+    public boolean addDestination(Destination destination) {
         if (destination == null) {
             throw new IllegalArgumentException("Destination cannot be null");
         }
-        return destinationRepository.save(destination);
+
+        try {
+            destinationRepository.save(destination);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
