@@ -10,17 +10,16 @@ public class user {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(length = 128, nullable = false, unique = true)
-    @NotEmpty(message = "Email is required")
-    @NotNull(message = "Email should not be null")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     @Email(message = "Invalid email format")
     private String email;
 
-    @Column(length = 64, nullable = false)
-    @NotBlank(message = "Password is required")
-    private String password;
 
+    @NotBlank(message = "Password is required")
+    @Column(name = "password_hash", length = 255, nullable = false)
+    private String passwordHash;
     @Column(name = "first_name", length = 45, nullable = false)
     @Size(min = 2, message = "First Name must be at least 2 characters long")
     @NotBlank(message = "First Name is required")
@@ -43,7 +42,7 @@ public class user {
     }
 
     public String getPassword() {
-        return password;
+        return passwordHash;
     }
 
     public String getFirstName() {
@@ -53,4 +52,21 @@ public class user {
     public String getLastName() {
         return lastName;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 }
