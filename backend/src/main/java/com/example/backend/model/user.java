@@ -37,6 +37,14 @@ public class user { //table name = user
     protected user(){}; //no args constructor for JPA
 
 
+    public user(String email, String passwordHash, String firstName, String lastName, boolean isAdminFlag) {
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isAdminFlag = isAdminFlag;
+    }
+
     public Long getId() {
         return id;
     }
