@@ -3,8 +3,6 @@ package com.example.backend.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import java.util.Locale;
-
 @Entity //JPA persistent table in db
 public class user { //table name = user
     @Id //primary key
@@ -82,6 +80,4 @@ public class user { //table name = user
     public void setAdminFlag(boolean adminFlag) {
         this.isAdminFlag = adminFlag;
     }
-
-
 }
