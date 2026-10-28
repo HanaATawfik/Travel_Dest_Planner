@@ -100,6 +100,9 @@ A destination is stored only after an administrator explicitly adds it. Therefor
 
 ## Architecture
 
+<img width="1536" height="1024" alt="Travel Destination Planner System Diagram" src="https://github.com/user-attachments/assets/88c58861-0f32-41ca-80a9-c478da3e71b1" />
+
+
 The application uses a layered backend:
 
 1. Angular provides the browser UI and sends HTTP requests.
