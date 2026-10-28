@@ -3,6 +3,8 @@ package com.example.backend.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.Locale;
+
 @Entity //JPA persistent table in db
 public class user { //table name = user
     @Id //primary key
@@ -19,22 +21,23 @@ public class user { //table name = user
     @Column(name = "password_hash", length = 255, nullable = false)
     private String passwordHash;
     @Column( length = 45, nullable = false)
-    @Size(min = 2, message = "First Name must be at least 2 characters long")
+    @Size(min = 2, max=45,message = "First Name must be at least 2 characters long")
     @NotBlank(message = "First Name is required")
     private String firstName;
 
     @Column(length = 45, nullable = false)
-    @Size(min = 2, message = "Length must be greater than 1")
+    @Size(min = 2, max=45, message = "Length must be greater than 1")
     @NotBlank(message = "Last Name is required")
     private String lastName;
 
 
-    @Column(length = 1)
-    private boolean adminFlag=false;
+    @Column(nullable = false)
+    private boolean isAdminFlag=false;  //role identifier
 
 
 
-    protected user(){};
+    protected user(){}; //no args constructor for JPA
+
 
     public Long getId() {
         return id;
@@ -73,10 +76,12 @@ public class user { //table name = user
     }
 
     public boolean isAdminFlag() {
-        return adminFlag;
+        return isAdminFlag;
     }
 
     public void setAdminFlag(boolean adminFlag) {
-        this.adminFlag = adminFlag;
+        this.isAdminFlag = adminFlag;
     }
+
+
 }
