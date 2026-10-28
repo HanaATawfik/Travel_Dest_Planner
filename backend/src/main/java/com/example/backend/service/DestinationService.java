@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DestinationService {
 
-    Destination addDestination(Destination destination);
+    boolean addDestination(Destination destination);
 
     List<Destination> addDestinations(List<Destination> destinations);
 
