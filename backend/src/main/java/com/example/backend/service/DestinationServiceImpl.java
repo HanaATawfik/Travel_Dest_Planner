@@ -26,10 +26,20 @@ public class DestinationServiceImpl implements DestinationService {
     }
 
     @Override
+    @Transactional
+    public List<Destination> addDestinations(List<Destination> destinations) {
+        if (destinations == null || destinations.isEmpty()) {
+            throw new IllegalArgumentException("Destination list cannot be empty");
+        }
+        return destinationRepository.saveAll(destinations);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Destination> getAllDestinations() {
         return destinationRepository.findAll();
     }
+
 
 
     @Override
