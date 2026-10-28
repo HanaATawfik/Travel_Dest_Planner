@@ -181,29 +181,8 @@ Requirement IDs connect planned behavior to testing. Statuses should be updated 
 
 ## Data model
 
-### `Destination`
+<img width="619" height="444" alt="Screen Shot 2026-10-28 at 11 26 49 PM" src="https://github.com/user-attachments/assets/71c23727-b316-4fb2-b376-258fa80ebb7f" />
 
-The `Destination` entity represents a destination saved by an administrator.
-
-- `id` — generated primary key
-- `country` — country name
-- `capital` — capital city
-- `region` — geographic region
-- `population` — population count
-- `currency` — currency description
-- `flagUrl` — URL used to display the country's flag
-
-A suggestion fetched from an external API should remain a DTO until an administrator chooses to save it. Saved records are accessed through `DestinationRepository`.
-
-### `User`
-
-The `User` entity represents an account. The current model includes an ID, unique email, password-hash field, first name, last name, and a role represented by `USER` or `ADMIN`.
-
-Password hashing, registration, login, and authorization must be fully implemented and tested before the application is considered secure.
-
-### `WantToVisit` (optional)
-
-If implemented, a `WantToVisit` entity can link a user to a destination. One user can save many destinations, and one destination can be saved by many users. A uniqueness constraint on the user/destination pair should prevent duplicate saves.
 
 ## API endpoints
 
