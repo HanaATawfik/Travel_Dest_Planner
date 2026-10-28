@@ -3,16 +3,15 @@ package com.example.backend.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-@Entity
-//@Table(name = "users")
-public class user {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Entity //JPA persistent table in db
+
+public class user { //table name = user
+    @Id //primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto generation
     private Long id;
 
     @Column(length = 128, nullable = false, unique = true)
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
     @Email(message = "Invalid email format")
     private String email;
 
@@ -41,7 +40,7 @@ public class user {
         return email;
     }
 
-    public String getPassword() {
+    public String getHashedPassword() {
         return passwordHash;
     }
 
