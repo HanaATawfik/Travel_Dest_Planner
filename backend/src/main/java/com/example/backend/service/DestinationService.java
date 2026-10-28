@@ -8,11 +8,9 @@ public interface DestinationService {
 
     boolean addDestination(Destination destination);
 
-    List<Destination> addDestinations(List<Destination> destinations);
+    boolean addDestinations(List<Destination> destinations);
 
     List<Destination> getAllDestinations();
-
-
 
     List<Destination> searchDestinationsByCountry(String country);
 
