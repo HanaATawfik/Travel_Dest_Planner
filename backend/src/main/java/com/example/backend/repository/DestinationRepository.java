@@ -6,5 +6,5 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 public interface DestinationRepository
     extends JpaRepository<Destination, Long> {
-
+    List<Destination> findByCountryContainingIgnoreCase(String country);
 }
