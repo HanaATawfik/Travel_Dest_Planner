@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity //JPA persistent table in db
+@Table(name = "app_users")
 public class user { //table name = user
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto generation
