@@ -2,6 +2,8 @@ package com.example.backend.controller;
 
 import com.example.backend.model.Destination;
 import com.example.backend.service.DestinationService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +13,19 @@ import java.util.List;
 public class DestinationController {
 
     private final DestinationService destinationService;
-    //constructor-based dependency injection
+
     public DestinationController(DestinationService destinationService) {
         this.destinationService = destinationService;
+    }
+
+    @GetMapping("/destinations")
+    public List<Destination> getAllDestinations() {
+        return destinationService.getAllDestinations();
+    }
+
+    @GetMapping("/destinations/search")
+    public List<Destination> searchDestinations(@RequestParam String country) {
+        return destinationService.searchDestinationsByCountry(country);
     }
 
     @PostMapping("/addDestination")
@@ -24,5 +36,11 @@ public class DestinationController {
     @PostMapping("/addDestinations")
     public boolean addDestinations(@RequestBody List<Destination> destinations) {
         return destinationService.addDestinations(destinations);
+    }
+
+    @DeleteMapping("/deleteDestination/{id}")
+    public ResponseEntity<String> deleteDestination(@PathVariable Long id) {
+        destinationService.deleteDestinationById(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Destination deleted successfully");
     }
 }
