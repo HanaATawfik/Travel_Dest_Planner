@@ -1,14 +1,21 @@
 package com.example.backend.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.backend.model.Destination;
+import com.example.backend.service.DestinationService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class DestinationController {
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "Hello, Spring Boot!";
+
+    private final DestinationService destinationService;
+    //constructor-based dependency injection
+    public DestinationController(DestinationService destinationService) {
+        this.destinationService = destinationService;
+    }
+
+    @PostMapping("/addDestination")
+    public boolean addDestination(@RequestBody Destination destination) {
+        return destinationService.addDestination(destination);
     }
 }
