@@ -29,12 +29,12 @@ public class DestinationController {
     }
 
     @PostMapping("/addDestination")
-    public boolean addDestination(@RequestBody Destination destination) {
+    public Destination addDestination(@RequestBody Destination destination) {
         return destinationService.addDestination(destination);
     }
 
     @PostMapping("/addDestinations")
-    public boolean addDestinations(@RequestBody List<Destination> destinations) {
+    public List<Destination> addDestinations(@RequestBody List<Destination> destinations) {
         return destinationService.addDestinations(destinations);
     }
 
