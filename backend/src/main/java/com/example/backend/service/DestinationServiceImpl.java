@@ -18,32 +18,22 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     @Transactional
-    public boolean addDestination(Destination destination) {
+    public Destination addDestination(Destination destination) {
         if (destination == null) {
             throw new IllegalArgumentException("Destination cannot be null");
         }
 
-        try {
-            destinationRepository.save(destination);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return destinationRepository.save(destination);
     }
 
     @Override
     @Transactional
-    public boolean addDestinations(List<Destination> destinations) {
+    public List<Destination> addDestinations(List<Destination> destinations) {
         if (destinations == null || destinations.isEmpty()) {
             throw new IllegalArgumentException("Destination list cannot be empty");
         }
 
-        try {
-            destinationRepository.saveAll(destinations);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return destinationRepository.saveAll(destinations);
     }
 
     @Override
