@@ -15,5 +15,7 @@ public interface DestinationService {
     List<Destination> searchDestinationsByCountry(String country);
 
     void deleteDestinationById(Long destinationId);
+
+    Destination displayDestination (Destination destination);
 }
 
