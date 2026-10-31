@@ -1,7 +1,8 @@
 package com.example.backend.service;
 
-import com.example.backend.model.user;
+import com.example.backend.model.User;
+
 public interface UserService {
-    user SignUp (user User);
-    user LogIn (user User);
+    User SignUp (User User);
+    User LogIn (User User);
 }

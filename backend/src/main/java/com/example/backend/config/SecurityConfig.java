@@ -6,7 +6,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,12 +35,12 @@ public class SecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails admin = User.withUsername("admin")
+        UserDetails admin = org.springframework.security.core.userdetails.User.withUsername("admin")
             .password(passwordEncoder().encode("admin123"))
             .roles("ADMIN")
             .build();
 
-        UserDetails user = User.withUsername("user")
+        UserDetails user = org.springframework.security.core.userdetails.User.withUsername("User")
             .password(passwordEncoder().encode("user123"))
             .roles("USER")
             .build();

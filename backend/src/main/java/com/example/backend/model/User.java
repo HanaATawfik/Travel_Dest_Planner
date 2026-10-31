@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 
 @Entity //JPA persistent table in db
 @Table(name = "app_users")
-public class user { //table name = user
+public class User { //table name = User
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto generation
     private Long id;
@@ -33,9 +33,9 @@ public class user { //table name = user
     @Column(nullable = false, length = 20)
     private Role role = Role.USER;
 
-    protected user() {} //no args constructor for JPA
+    protected User() {} //no args constructor for JPA
 
-    public user(String email, String passwordHash, String firstName, String lastName, Role role) {
+    public User(String email, String passwordHash, String firstName, String lastName, Role role) {
         this.email = email;
         this.passwordHash = passwordHash;
         this.firstName = firstName;
